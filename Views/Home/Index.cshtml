@@ -1,0 +1,31 @@
+﻿@using ImageUploadEF.ViewModel
+@model HomePageViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+<div style="margin-bottom:1vh">
+    @Html.ActionLink("New Image", "New", "Image", null, new { @class = "btn btn-primary" })
+
+</div>
+<div class="col-md-12">
+    <ul class="list-group">
+        <li class="list-group-item active">Image List</li>
+        @foreach (var image in Model.Images)
+        {
+            <li class="list-group-item">
+                @Html.ActionLink("Update", "Update", "Image", new { imageId = image.ID }, new { @class = "btn btn-warning btn-xs" })
+                @Html.ActionLink("Delete", "Delete", "Image", new { imageId = image.ID }, new { @class = "btn btn-danger btn-xs" })
+                @image.Name
+                <img src="~/images/@image.ImageFileName" class="img-circle" width="128" height="128" style="margin-left:15vw" />
+            </li>
+
+
+        }
+
+    </ul>
+</div>
+
+
+

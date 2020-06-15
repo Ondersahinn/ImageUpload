@@ -1,0 +1,30 @@
+﻿@using ImageUploadEF.Models
+@model Images
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Image</h2>
+<div class="custom-file mb-3">
+    @using (Html.BeginForm("New", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <label class="custom-file-label" for="ImageFilename">Choose file</label>
+        <input type="file" name="FileBase" id="FileBase" />
+        <span class="glyphicon glyphicon-info-sign">&nbsp;</span>
+        <span><i>Lütfen jpg, jpeg ya da png formatı kullanın.</i></span>
+        <span class="input-group-addon" style="width:8vw" id="txtname">Name</span>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Image Name", aria_describedby = "txtname" })
+        <div class="input-group">
+            @if (ViewBag.Result != null)
+            {
+                <div class="alert alert-@ViewBag.Status" style="margin-top:2vh" role="alert">
+                    @ViewBag.Result
+                </div>
+            }
+        </div>
+        <input style="margin-top:2vh" type="submit" value="Create" class="btn btn-success" />
+
+    }
+
+</div>

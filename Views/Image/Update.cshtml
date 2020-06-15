@@ -1,0 +1,35 @@
+﻿@using ImageUploadEF.Models
+@model Images
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Image</h2>
+<div class="custom-file mb-3">
+    @using (Html.BeginForm("Update", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.Hidden("imageId")
+        @Html.HiddenFor(x => x.ID)
+        <img src="~/images/@Model.ImageFileName" class="img-circle" width="128" height="128" style="margin-left:15vw" />
+        <br />
+        <label class="custom-file-label" for="ImageFilename">Choose file</label>
+        <input type="file" name="FileBase" id="FileBase" />
+        <span class="glyphicon glyphicon-info-sign">&nbsp;</span>
+        <span><i>Lütfen jpg, jpeg ya da png formatı kullanın.</i></span>
+        <span class="input-group-addon" style="width:8vw" id="txtname">Name</span>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = Model.Name, aria_describedby = "txtname" })
+        <div class="input-group">
+            @if (ViewBag.Result != null)
+            {
+                <div class="alert alert-@ViewBag.Status" style="margin-top:2vh" role="alert">
+                    @ViewBag.Result
+                </div>
+            }
+
+        </div>
+        <input style="margin-top:2vh" id="imageId" type="submit" value="Update" class="btn btn-success" />
+
+    }
+
+</div>
+

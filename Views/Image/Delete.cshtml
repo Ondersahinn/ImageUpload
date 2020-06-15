@@ -1,0 +1,28 @@
+﻿@using ImageUploadEF.Models
+@model Images
+@{
+    ViewBag.Title = "Delete";
+}
+
+<p>Kaydı silmek istediğinizden emin misiniz</p>
+<h2>Delete Image</h2>
+<div class="custom-file mb-3">
+    @using (Html.BeginForm("Delete", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.Hidden("imageId")
+        @Html.HiddenFor(x => x.ID)
+
+        @Html.DisplayFor(x => x.Name, new { @class = "form-control", aria_describedby = "txtname" })
+        <div class="input-group">
+            @if (ViewBag.Result != null)
+            {
+                <div class="alert alert-@ViewBag.Status" style="margin-top:2vh" role="alert">
+                    @ViewBag.Result
+                </div>
+            }
+        </div>
+        <input style="margin-top:2vh" type="submit" value="Delete" id="imageId" class="btn btn-success" />
+
+    }
+
+</div>

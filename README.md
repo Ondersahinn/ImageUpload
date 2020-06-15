@@ -1,6 +1,8 @@
 # ImageUpload
 Bilge Adam Image Upload Project
 
+.Net MVC MSSQL Entity Freamwork
+
 Home Page
 ![alt text](https://user-images.githubusercontent.com/46032537/84701079-f88c0780-af5c-11ea-8fc8-c952a8ec72ed.JPG)
 
